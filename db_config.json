@@ -1,0 +1,8 @@
+{
+    "driver": "SQL Server",
+    "server": "ARULDESKTOP",
+    "database": "OLTP",
+    "trusted_connection": "yes",
+    "username": "",
+    "password": ""
+}

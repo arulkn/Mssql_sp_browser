@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stored Procedures Viewer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script>
+        // Highlight the selected procedure
+    document.querySelectorAll('.procedure-link').forEach(link => {
+    link.addEventListener('click', function() {
+        // Remove the 'active' class from all procedure links
+        document.querySelectorAll('.procedure-link').forEach(l => l.classList.remove('active'));
+        // Add the 'active' class to the clicked procedure link
+        this.classList.add('active');
+    });
+});
+document.getElementById('highlight-btn').addEventListener('click', function () {
+            highlightWordInClass('from', 'source');
+        });
+function highlightWordInClass(word, className) {
+            const container = document.querySelector(`.${className}`); // Select the target container
+            if (!container) return; // Exit if the container doesn't exist
+
+            const regex = new RegExp(`\\b${word}\\b`, 'gi'); // Match the whole word, case-insensitive
+            const highlightClass = 'highlight';
+
+            // Recursive function to replace text with highlighted spans
+            function recursiveHighlight(node) {
+                if (node.nodeType === 3) { // Text node
+                    const match = regex.exec(node.nodeValue);
+                    if (match) {
+                        const span = document.createElement('span');
+                        span.className = highlightClass;
+                        span.textContent = match[0];
+
+                        const after = node.splitText(match.index);
+                        after.nodeValue = after.nodeValue.substring(match[0].length);
+
+                        node.parentNode.insertBefore(span, after);
+                        recursiveHighlight(after);
+                    }
+                } else if (node.nodeType === 1 && node.childNodes) { // Element node
+                    Array.from(node.childNodes).forEach(recursiveHighlight);
+                }
+            }
+
+            recursiveHighlight(container); // Start the highlighting within the container
+        }
+
+        // Highlight the word "from" only within the "source" div after the page loads
+      
+    </script>
+</head>
+<body>
+    <div id="sidebar">
+        <h2>Stored Procedures</h2>
+        {% if error %}
+        <div class="error">{{ error }}</div>
+        {% endif %}
+        {% for display_name, full_name in zip(display_names, full_names) %}
+        <a class="procedure-link" onclick="loadProcedure('{{ full_name }}')" data-full-name="{{ full_name }}">
+            {{ display_name }}
+        </a>
+        {% endfor %}
+        <div class="config-form">
+            <h3>Database Configuration</h3>
+            <form id="configForm" action="/save_config" method="post">
+                <!-- Add your configuration form fields here -->
+            </form>
+        </div>
+    </div>
+    <div id="main-content">
+        <div id="alphabet-filter" style="margin-bottom: 15px; display: flex; flex-wrap: wrap; gap: 5px;">
+            {% for char in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' %}
+            <button onclick="filterProcedures('{{ char }}')" class="action-button">{{ char }}</button>
+            {% endfor %}
+            <button onclick="filterProcedures('ALL')" class="action-button">ALL</button>
+        </div>
+        <div class="button-group" style="margin-bottom: 15px;">
+            <button onclick="copyCode()" class="action-button">Copy Code</button>
+            <button onclick="formatSQL()" class="action-button">Format SQL</button>
+            <button onclick="markAsComplete()" class="action-button">Complete</button> <!-- New Button -->
+        </div>
+        <div id="code-display">
+            <p>Select a stored procedure from the sidebar to view its definition.</p>
+        </div>
+    </div>
+</body>
+</html>

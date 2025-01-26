@@ -1,0 +1,176 @@
+/* General Styles */
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    display: flex;
+    height: 100vh;
+    background-color: #f9f9f9;
+}
+.highlight {
+    background-color: yellow; /* Set the desired background color */
+    color: black; /* Optional: Adjust text color for better visibility */
+}
+
+#sidebar {
+    width: 280px; /* Fixed width for the sidebar */
+    height: 100vh; /* Full height of the viewport */
+    background-color: #2c3e50; /* Sidebar background color */
+    padding: 20px;
+    border-right: 1px solid #1a252f; /* Border on the right side */
+    overflow-y: auto; /* Enable vertical scrolling if content overflows */
+    position: fixed; /* Fix the sidebar in place */
+    top: 0; /* Align to the top */
+    left: 0; /* Align to the left */
+    color: #ecf0f1; /* Text color */
+}
+/* Main Content Styles */
+#main-content {
+    margin-left: 300px; /* Offset main content by sidebar width */
+    padding: 20px;
+    overflow-y: auto; /* Enable vertical scrolling if content overflows */
+    background-color: #ffffff; /* Main content background color */
+}
+
+/* Procedure Links */
+.procedure-link {
+    display: block;
+    padding: 10px 15px;
+    margin: 5px 0;
+    color: #ecf0f1;
+    text-decoration: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.procedure-link:hover {
+    background-color: #34495e;
+}
+.procedure-link.active {
+    background-color: #007bff; /* Highlight color for the active procedure */
+    color: white;
+}
+/* Code Display */
+#code-display {
+    background-color: #1e1e1e;
+    padding: 20px;
+    border-radius: 8px;
+    overflow-x: auto;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #ffffff;
+    white-space: pre-wrap; /* Ensures text wraps */
+    word-wrap: break-word; /* Breaks long words */
+    overflow-wrap: break-word; /* Ensures long words break and wrap */
+}
+
+.source {
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #ffffff;
+    white-space: pre-wrap; /* This ensures the text wraps */
+}
+
+/* Pygments Syntax Highlighting */
+.source .k { color: #569cd6; } /* Keyword */
+.source .n { color: #9cdcfe; } /* Name */
+.source .o { color: #d4d4d4; } /* Operator */
+.source .p { color: #d4d4d4; } /* Punctuation */
+.source .s { color: #ce9178; } /* String */
+.source .c1 { color: #6a9955; } /* Comment */
+.source .mi { color: #b5cea8; } /* Number */
+
+/* Configuration Form */
+.config-form {
+    background-color: #34495e;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #1a252f;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: #ecf0f1;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #1a252f;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: #2c3e50;
+    color: #ecf0f1;
+}
+
+.button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+/* Error and Success Messages */
+.error {
+    color: #dc3545;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #f8d7da;
+    border-radius: 4px;
+}
+
+.success {
+    color: #28a745;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #d4edda;
+    border-radius: 4px;
+}
+
+/* Alphabet Filter */
+#alphabet-filter {
+    margin-bottom: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.action-button {
+    background-color: #007bff;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.action-button:hover {
+    background-color: #0056b3;
+}
+
+/* Button Group */
+.button-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
