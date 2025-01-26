@@ -1,5 +1,6 @@
 MSSQL Stored Procedure Browser
-Welcome to the MSSQL Stored Procedure Browser! This is a Python Flask application designed to help you analyze and manage SQL Server stored procedures efficiently. It provides a user-friendly interface to browse, filter, and analyze stored procedures, with features like highlighting keywords and tracking completed procedures.
+Welcome to the MSSQL Stored Procedure Browser! This is a Python Flask application designed to help you analyze and manage SQL Server stored procedures efficiently. 
+It provides a user-friendly interface to browse, filter, and analyze stored procedures, with features like highlighting keywords and tracking completed procedures.
 
 Features
 Browse Stored Procedures: View all stored procedures from your SQL Server database in a sidebar.
@@ -22,14 +23,14 @@ Flask
 
 PyODBC (for connecting to MSSQL)
 
-A SQL Server database
+#A SQL Server database
 
-Installation
+#Installation
 Clone the Repository:
 
 bash
 Copy
-git clone https://github.com/your-username/Mssql_sp_browser.git
+git clone https://github.com/arulkn/Mssql_sp_browser.git
 cd Mssql_sp_browser
 Install Dependencies:
 Install the required Python packages using requirements.txt:
